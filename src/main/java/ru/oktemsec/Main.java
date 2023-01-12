@@ -1,6 +1,7 @@
 package ru.oktemsec;
 
 import ru.oktemsec.entity.Catalog;
+import ru.oktemsec.entity.Category;
 
 import java.util.Scanner;
 
@@ -25,19 +26,21 @@ public class Main {
                     println( "Количество каталогов: " + Catalog.count );
                     println( "Категории в каталоге: " + catalog.getCategories().toString() );
 
-                    gameover = true;
+                    //gameover = true;
                     break;
                 }
                 case 2: {
 
+                    Category computersCategory = new Category("компьютеры");
+                    catalog.addCategory(computersCategory);
+                    println( "Категории в каталоге: " + catalog.getCategories().toString() );
 
-
-                    gameover = true;
+                    //gameover = true;
                     break;
                 }
                 default: {
                     println("Incorrect command");
-                    gameover = true;
+                    //gameover = true;
                     break;
                 }
             }
