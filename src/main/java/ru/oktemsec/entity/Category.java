@@ -3,24 +3,21 @@ package ru.oktemsec.entity;
 import java.util.ArrayList;
 
 public class Category {
-    private static int count;
+    static int count;
 
     private int id;
     private String name;
-    private ArrayList<Position> positions;
+    private final ArrayList<Position> positions;
 
     static {
         count = 0;
     }
 
-    Category() {
+    public Category(String name) {
+        this.name = name;
         count++;
         id = count;
         positions = new ArrayList<>();
-    }
-
-    public Category(String name) {
-        this.name = name;
     }
 
     public int getId() {
@@ -45,5 +42,9 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public static int getCount() {
+        return count;
     }
 }

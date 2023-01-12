@@ -12,39 +12,55 @@ public class Main {
 
         // create one catalog
         Catalog catalog = new Catalog();
-
         Scanner scanner = new Scanner(System.in);
+
         while(!gameover) {
+            println("");
+            println("=========================");
+            println("Главное меню:");
             println("1 get catalog");
             println("2 add category to catalog");
 
             int command = scanner.nextInt();
 
             switch (command) {
-                case 1: {
+                case 1 -> {
 
-                    println( "Количество каталогов: " + Catalog.count );
-                    println( "Категории в каталоге: " + catalog.getCategories().toString() );
+                    println("Количество каталогов: " + Catalog.count);
+                    println("Категории в каталоге: ");
+                    println("- Количество категорий в каталоге: " + catalog.getCategories().size());
+
+                    if (catalog.getCategories().size() > 0) {
+                        println("Список категорий: (id, name, count of positions)");
+                        catalog.getCategories().forEach(
+                                (category) -> {
+                                    printCategoryOnLine(category);
+                                }
+                        );
+
+                    }
 
                     //gameover = true;
-                    break;
                 }
-                case 2: {
+                case 2 -> {
 
                     Category computersCategory = new Category("компьютеры");
                     catalog.addCategory(computersCategory);
-                    println( "Категории в каталоге: " + catalog.getCategories().toString() );
 
                     //gameover = true;
-                    break;
                 }
-                default: {
+                default -> {
                     println("Incorrect command");
                     //gameover = true;
-                    break;
                 }
             }
         }
+    }
+
+    private static void printCategoryOnLine(Category category) {
+        print(String.valueOf(category.getId()));
+        print(" " + category.getName());
+        print(" " + String.valueOf(category.getPositions().size()) + "\n");
     }
 
     private static void print(String message) {

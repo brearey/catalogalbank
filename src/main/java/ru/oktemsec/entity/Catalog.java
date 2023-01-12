@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Catalog {
     public static int count;
-    public ArrayList<Category> categories;
+    private final ArrayList<Category> categories;
 
     static {
         count = 0;
@@ -16,11 +16,11 @@ public class Catalog {
     }
 
     public void addCategory(Category category) {
-        categories.add(category);
+        this.categories.add(category);
     }
 
     public void deleteCategory(int categoryId) {
-        categories.remove(categoryId);
+        this.categories.remove(categoryId);
     }
 
     public ArrayList<Category> getCategories() {
