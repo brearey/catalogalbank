@@ -1,5 +1,7 @@
 package ru.oktemsec;
 
+import ru.oktemsec.entity.Catalog;
+
 import java.util.Scanner;
 
 public class Main {
@@ -7,21 +9,29 @@ public class Main {
 
         boolean gameover = false;
 
+        // create one catalog
+        Catalog catalog = new Catalog();
+
         Scanner scanner = new Scanner(System.in);
         while(!gameover) {
-            println("1 Say hello");
-            println("2 Say bye");
+            println("1 get catalog");
+            println("2 add category to catalog");
 
             int command = scanner.nextInt();
 
             switch (command) {
                 case 1: {
-                    println("Hello my friend!");
+
+                    println( "Количество каталогов: " + Catalog.count );
+                    println( "Категории в каталоге: " + catalog.getCategories().toString() );
+
                     gameover = true;
                     break;
                 }
                 case 2: {
-                    println("Oo bye bye");
+
+
+
                     gameover = true;
                     break;
                 }

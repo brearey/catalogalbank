@@ -3,9 +3,9 @@ package ru.oktemsec.entity;
 import java.util.ArrayList;
 
 public class Category {
-    private int id;
+    private static int count;
 
-    static int count;
+    private int _id;
     public ArrayList<Position> positions;
 
     static {
@@ -14,10 +14,11 @@ public class Category {
 
     Category() {
         count++;
+        _id = count;
     }
 
     public int getId() {
-        return id;
+        return _id;
     }
 
     public Category(ArrayList<Position> positions) {
@@ -30,5 +31,9 @@ public class Category {
 
     public ArrayList<Position> getPositions() {
         return positions;
+    }
+
+    public void deletePosition(int positionId) {
+        positions.remove(positionId);
     }
 }
