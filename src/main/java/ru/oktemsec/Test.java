@@ -1,27 +1,30 @@
 package ru.oktemsec;
 
-import ru.oktemsec.entity.Category;
+import ru.oktemsec.controller.Input;
+import ru.oktemsec.entity.Command;
 
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class Test {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedEncodingException {
 
         Scanner scanner = new Scanner(System.in);
         String inputLine = scanner.nextLine();
-        String inputLineWithoutBeginEndSpaces = inputLine.trim();
-        String[] commands = inputLineWithoutBeginEndSpaces.split(" ");
 
-        if (commands.length > 2) {
-            System.out.println("Некорректная команда");
-            return;
-        }
+        Command cmd = Input.getCommandFromString(inputLine);
 
-        for (String command : commands) {
-            command = command.trim();
-            System.out.println(command);
-        }
+
+        System.out.println("command name: " + cmd.name);
+        System.out.println("command args count: " + cmd.argsCount);
+        System.out.println("command desc: " + cmd.desc);
+
+//        PrintWriter pw = new PrintWriter(new OutputStreamWriter(System.out, "Cp866"), true);
+//        pw.println("command name: " + cmd.name);
+//        pw.println("command args count: " + cmd.argsCount);
+//        pw.println("command desc: " + cmd.desc);
 
         scanner.close();
 

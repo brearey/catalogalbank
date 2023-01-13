@@ -8,5 +8,6 @@ public enum CommandName {
     rename_category,
     add_position,
     delete_position,
-    set_position_count
+    set_position_count,
+    developer
 }
